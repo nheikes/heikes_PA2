@@ -2,9 +2,18 @@ package heikes_p2;
 
 import java.util.Scanner;
 
+/*
+	Pseudocode...
+	Get and store the measurement system
+	Get and store the measurement data (weight and height)
+		Exit the program if either are less than one
+	Calculate the BMI
+	Calculate the BMICatagory
+	Print both the BMI and the BMI Category
+ */
+
 public class BMICalculator 
 {
-	
 	private static int weight;
 	private static int height;
 	private static double bmi;

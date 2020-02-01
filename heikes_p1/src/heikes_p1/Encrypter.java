@@ -2,16 +2,27 @@ package heikes_p1;
 
 import java.util.ArrayList;
 
+/*
+	Pseudocode...
+	
+	Separate a number into its digits
+	Encrypt each number according to (x plus seven) mod ten
+	Swap the first and third digits, and the second and fourth digits
+	Return the number
+	
+	As an added challenge, I've made it so that this function will work with numbers larger than four digits.
+	The encryption for each digit is still the same, and the swapping follows the same pattern
+	(1 swap 3, 2 swap 4, 5 swap 7, 6 swap 8, etc)
+	The function still works for the original assignment and follows the PA1 Rubric
+*/
+
 public class Encrypter 
 {
-	public static void encrypt(String numIn)
+	public static String encrypt(String numIn)
 	{
-		// For each digit
-		// add 7
-		// divide by 10
-		// get the remainder
-		
 		ArrayList<Integer> digits = new ArrayList<Integer>();
+		
+		// Load the number from numIn into digits
 		for (int i = 0; i < numIn.length(); i++)
 		{
 			digits.add(Character.getNumericValue(numIn.charAt(i)));
@@ -23,12 +34,7 @@ public class Encrypter
 			digits.set(i, (digits.get(i) + 7) % 10);
 		}
 		
-		reOrder(digits);
-		printList(digits);
-	}
-	
-	private static void reOrder(ArrayList<Integer> digits)
-	{
+		// Reorder digits
 		int hold;
 		int i = 0;
 		while (i < digits.size() - 2) 
@@ -50,14 +56,13 @@ public class Encrypter
 			}
 			
 		}
-	}
-	
-	private static void printList(ArrayList<Integer> digits)
-	{
+
+		// Return digits (reuse numIn so that we don't have to declare another string)
+		numIn = "";
 		for (Integer num : digits) 
 		{
-			System.out.print(num);
+			numIn += num;
 		}
-		System.out.println();
+		return numIn;
 	}
 }
