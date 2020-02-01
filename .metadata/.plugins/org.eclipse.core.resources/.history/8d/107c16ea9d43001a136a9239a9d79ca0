@@ -1,0 +1,57 @@
+package heikes_p1;
+
+import java.util.ArrayList;
+
+public class Encrypter 
+{
+	public static void encrypt(int numIn)
+	{
+		// For each digit
+		// add 7
+		// divide by 10
+		// get the remainder
+		ArrayList<Integer> digits = new ArrayList<Integer>();
+		while (numIn >= 1)
+		{
+			digits.add(0, numIn % 10);
+			numIn /= 10;
+		}
+		
+		for (int i = 0; i < digits.size(); i++) 
+		{
+			digits.set(i, (digits.get(i) + 7) % 10);
+		}
+		
+		
+		// swap digit one with three
+		// swap two with tour
+		int hold;
+		int i = 0;
+		while (i < digits.size() - 2) 
+		{
+			hold = digits.get(i);
+			digits.set(i, digits.get(i + 2));
+			digits.set(i + 2, hold);
+			
+			// 0 and 1 are good
+			// 2 and 3 are bad
+			// 4 and 5 are good...
+			if (i % 2 == 0)
+			{
+				i++;
+			}
+			else
+			{
+				i += 3;
+			}
+			
+		}
+		
+		// Print
+		for (Integer num : digits) 
+		{
+			System.out.print(num);
+		}
+		System.out.println();
+	}
+}
